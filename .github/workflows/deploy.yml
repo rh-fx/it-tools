@@ -17,12 +17,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.11.0' # 选择适合的 Node.js 版本
+          cache: 'pnpm'
       
       - name: Install dependencies
-        run: npm install
+        run: pnpm i
       
       - name: Build project
-        run: npm run build
+        run: pnpm build
       
       - name: Deploy to EdgeOne Pages
         run: npx edgeone pages deploy ./dist -n it-tools -t ${{ secrets.EDGEONE_API_TOKEN }}
